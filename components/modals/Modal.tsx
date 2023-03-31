@@ -1,4 +1,6 @@
 import React, { useCallback, useEffect, useState } from "react";
+import { IoMdClose } from "react-icons/io";
+import Button from "../Button";
 interface ModalProps {
 	isOpen?: boolean;
 	onClose: () => void;
@@ -57,6 +59,7 @@ const Modal: React.FC<ModalProps> = ({ actionLabel, onClose, onSubmit, body, dis
         focus:outline-none
         "
 		>
+			{/* wrapper */}
 			<div
 				className="
             relative
@@ -65,12 +68,10 @@ const Modal: React.FC<ModalProps> = ({ actionLabel, onClose, onSubmit, body, dis
             md:w-4/6
             lg:w-3/6
             xl:w-2/5
-            my-6
             mx-auto
-            h-full
+            // h-full
             lg:h-auto
             md:h-auto
-           
             "
 			>
 				{/* content */}
@@ -82,10 +83,13 @@ const Modal: React.FC<ModalProps> = ({ actionLabel, onClose, onSubmit, body, dis
                  ${showModal ? "opacity-100" : "opacity-0"}
                  `}
 				>
+					{/* content wrapper */}
 					<div
 						className="
-                        translate 
-                        h-full 
+                        // translate 
+                        my-6
+                      bg-white
+                      shadow-lg
                         lg:h-auto 
                         md:h-auto 
                         border-0 
@@ -97,16 +101,35 @@ const Modal: React.FC<ModalProps> = ({ actionLabel, onClose, onSubmit, body, dis
                          outline-none
                     "
 					>
-                        {/* header */}
-                        <div className="flex
+						{/* header */}
+						<div
+							className="flex
                         items-center
                         p-6
                         rounded-t
                         justify-center
-                        relative border-b-2 bg-white shadow-lg">
+                        relative 
+                        border-b-2 
+                        "
+						>
+							<button
+								onClick={handleClose}
+								className="absolute right-8  rounded-full border-none  w-8 h-8  shadow-sm bg-rose-500 text-white top-5   flex items-center justify-center"
+							>
+								<IoMdClose />
+							</button>
+							<div className="text-center text-lg font-semibold">{title}</div>
+						</div>
 
-                        </div>
-                    </div>
+						{/* body */}
+						<div className="flex-auto relative p-6">{body}</div>
+						{/* footer */}
+						<div className="flex flex-col gap-2 p-6">
+							<div className="flex flex-row w-full gap-2 items-center">
+								<Button label='My button'/>
+							</div>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>

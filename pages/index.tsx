@@ -17,7 +17,7 @@ export default function Home() {
 			</Head>
 			<main className={nunito.className }>
 				<div className="relative">
-				<Modal isOpen/>
+				<Modal isOpen title="Login modal"/>
 				<Navbar/>
 				</div>
 			</main>
