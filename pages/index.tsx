@@ -3,6 +3,7 @@ import Image from "next/image";
 import { Nunito } from "next/font/google";
 import Navbar from "@/components/Navbar/Navbar";
 import Modal from "@/components/modals/Modal";
+import RegisterModal from "@/components/modals/RegisterModal";
 
 const nunito = Nunito({ subsets: ["latin"] });
 
@@ -17,7 +18,7 @@ export default function Home() {
 			</Head>
 			<main className={nunito.className }>
 				<div className="relative">
-				<Modal isOpen title="Login modal"/>
+				<RegisterModal/>
 				<Navbar/>
 				</div>
 			</main>
