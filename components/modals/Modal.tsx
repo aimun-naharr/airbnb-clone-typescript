@@ -123,12 +123,13 @@ console.log(showModal)
 
 						{/* body */}
 						<div className="flex-auto relative p-6">{body}</div>
-						{/* footer */}
+						
 						<div className="flex flex-col gap-2 p-6">
 							<div className="flex flex-row w-full gap-2 items-center">
 								{secondaryAction && secondaryActionLabel && <Button label={secondaryActionLabel} disabled={disabled} onClick={handleSubmit} outline/>}
 								<Button label={actionLabel} disabled={disabled} onClick={handleSubmit}/>
 							</div>
+							<div>{footer}</div>
 						</div>
 					</div>
 				</div>

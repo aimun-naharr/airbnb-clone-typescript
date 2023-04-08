@@ -7,6 +7,7 @@ import axios from "axios";
 import Modal from "./Modal";
 import Heading from "./Heading";
 import Input from "../Input";
+import Button from "../Button";
 
 const RegisterModal = () => {
 	const registerModal = useRegisterModal();
@@ -23,7 +24,7 @@ const RegisterModal = () => {
 			password: "",
 		},
 	});
-	console.log(errors)
+	console.log(errors);
 	const onSubmit: SubmitHandler<FieldValues> = (data) => {
 		// setIsLoading(false);
 		// axios.post("api/register", data)
@@ -35,13 +36,21 @@ const RegisterModal = () => {
 	const bodyContent = (
 		<div className="flex flex-col gap-4">
 			<Heading title="Welcome to Airbnb" subTitle="Please signup first" />
-			<Input  id='email' label='Email' register={register} errors={errors} disabled={isLoading}
-			/>
-			<Input  id='name' label='Name' register={register} errors={errors} disabled={isLoading}
-			/>
+			<Input id="email" label="Email" register={register} errors={errors} disabled={isLoading} required />
+			<Input id="name" label="Name" register={register} errors={errors} disabled={isLoading} required />
 		</div>
 	);
 
+	const footerContent = (
+		<div className="flex flex-col gap-4 mt-3">
+			<Button outline label="Continue with google" icon={FcGoogle} onClick={() => {}} />
+			<Button outline label="Continue with github" icon={AiFillGithub} onClick={() => {}} />
+			<div className="text-neutral-600 flex flex-row items-center justify-center gap-2">
+				<div>Already registered?</div>
+				<div className="text-neutral-800 cursor-pointer hover:underline transition-all">Please login</div>
+			</div>
+		</div>
+	);
 	return (
 		<Modal
 			title="Register"
@@ -51,6 +60,7 @@ const RegisterModal = () => {
 			actionLabel="Continue"
 			onSubmit={handleSubmit(onSubmit)}
 			body={bodyContent}
+			footer={footerContent}
 		/>
 	);
 };
