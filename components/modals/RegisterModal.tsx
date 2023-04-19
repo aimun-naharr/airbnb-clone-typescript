@@ -24,20 +24,22 @@ const RegisterModal = () => {
 			password: "",
 		},
 	});
-	console.log(errors);
+	
 	const onSubmit: SubmitHandler<FieldValues> = (data) => {
-		// setIsLoading(false);
-		// axios.post("api/register", data)
-		// 	.then(() => registerModal.onClose())
-		// 	.catch((err) => console.log(err))
-		// 	.finally(() => setIsLoading(false));
+		setIsLoading(false);
+		axios.post("/api/register/route", data)
+			.then((res) => {registerModal.onClose()
+			console.log(res)})
+			.catch((err) => console.log(err))
+			.finally(() => setIsLoading(false));
 	};
 
 	const bodyContent = (
 		<div className="flex flex-col gap-4">
 			<Heading title="Welcome to Airbnb" subTitle="Please signup first" />
-			<Input id="email" label="Email" register={register} errors={errors} disabled={isLoading} required />
+			<Input id="email" label="Email" register={register} errors={errors} disabled={isLoading} required type='email' />
 			<Input id="name" label="Name" register={register} errors={errors} disabled={isLoading} required />
+			<Input id="password" type="password" label="Password" register={register} errors={errors} disabled={isLoading} required />
 		</div>
 	);
 

@@ -3,6 +3,7 @@ import Container from "../Container";
 import Logo from "./Logo";
 import SearchInput from "./SearchInput";
 import UserProfile from "./UserProfile";
+import Categories from "./Categories";
 
 const Navbar = () => {
 	return (
@@ -16,6 +17,7 @@ const Navbar = () => {
 					</div>
 				</Container>
 			</div>
+				<Categories/>
 		</div>
 	);
 };
